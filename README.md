@@ -4,7 +4,7 @@ If you run your R710 in a dedicated server room noise won't be an issue for you.
 
 ### How does it work?
 
-While searching for a solution to this problem i stumbled across some scripts by @NoLooseEnds that set the speed to a defined value: [R710-IPMI-TEMP](https://github.com/NoLooseEnds/Scripts/tree/master/R710-IPMI-TEMP)
+While searching for a solution to this problem i stumbled across some scripts by [@NoLooseEnds](https://github.com/NoLooseEnds) that set the speed to a defined value: [R710-IPMI-TEMP](https://github.com/NoLooseEnds/Scripts/tree/master/R710-IPMI-TEMP)
 
 Based on that i started playing around with the ipmitool and wrote this tool in Ruby that can be used to set a specific value but as well to actually monitor the cpu core temperature and ramp up the fans accordingly. To do that you can configure which fan speed should be applied at which temperature and just let it run. If the cpu temperature goes above the defined max temperature it will switch back to Dell's automatic mode. This will bring the temperature back down to a reasonable value and after a configurable cool down period we start again with our fan speeds. 
 
