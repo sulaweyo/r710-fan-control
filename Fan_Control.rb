@@ -101,8 +101,9 @@ module R710_Tools
         while true
           cur_temp = get_temperature[:max]
           if cur_temp > @config[:max_manual_temp]
+            puts "Temperature higher than max_manual_temp -> switching to automatic"
             set_fan_automatic
-            puts "cool down period started"
+            puts "Cool down period started"
             sleep @config[:cool_down_time]
             next
           end
@@ -112,7 +113,7 @@ module R710_Tools
           sleep @config[:interval]
         end
       rescue SystemError => e
-        puts "Exception or Interrupt occured - switching back to automatic fan control"
+        puts "Exception or Interrupt occurred - switching back to automatic fan control"
         set_fan_automatic
         raise e
       end
