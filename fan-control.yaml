@@ -12,5 +12,5 @@
   !ruby/range 41..50: 20  # run at 15% speed up to 40°C
   !ruby/range 51..55: 30 # run at 20% speed up to 50°C
   !ruby/range 56..60: 35  # run at 30% speed up to 60°C
-  !ruby/range 61..65: 40  # run at 40% speed up to 65°C
+  !ruby/range 61..66: 40  # run at 40% speed up to 65°C
 
