@@ -46,7 +46,7 @@ module R710_Tools
 
     desc 'reset', 'Switch back to automatic fan control'
 
-    def reset(value)
+    def reset
       R710_Tools::Fan_Control.instance.set_fan_automatic
     end
 
