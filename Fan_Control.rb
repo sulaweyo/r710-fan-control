@@ -42,6 +42,31 @@ module R710_Tools
       return { :min => min_temp, :max => max_temp}
     end
 
+    # get current ambient temp via ipmi
+    def get_ambient
+      output = `#{@ipmitool} -I lanplus -H #{@config[:host]} -U #{@config[:user]} -P #{@config[:pass]} sdr get "Ambient Temp"`
+      result = {}
+      output.each_line do |line|
+        if line =~ /Sensor Reading\s+:\s+(\d+)/
+          result[:current] = $1.to_i
+          next
+        end
+        if line =~ /Upper critical\s+:\s+(\d+)/
+          result[:crit] = $1.to_i
+          next
+        end
+        if line =~ /Upper non-critical\s+:\s+(\d+)/
+          result[:warn] = $1.to_i
+          next
+        end
+        if line =~ /Status\s+:\s+(\w+)/
+          result[:status] = $1
+          next
+        end
+      end
+      return result
+    end
+
     # get current fan speeds via ipmi
     def get_fan_speed
       output = `#{@ipmitool} -I lanplus -H #{@config[:host]} -U #{@config[:user]} -P #{@config[:pass]} sdr type Fan`

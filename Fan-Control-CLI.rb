@@ -35,6 +35,15 @@ module R710_Tools
       puts "Current CPU temperature: #{t[:min]}-#{t[:max]}°C (min/max)"
     end
 
+    desc 'ambient', 'Get current ambient temperature'
+
+    def ambient
+      a = R710_Tools::Fan_Control.instance.get_ambient
+      puts "Current ambient temperature: #{a[:current]}°C - Status: #{a[:status]}"
+      puts "Ambient warning threshold: #{a[:warn]}°C"
+      puts "Ambient critical threshold: #{a[:crit]}°C"
+    end
+
     desc 'setspeed [value]', 'Set fan speed to given percent of max speed'
 
     def setspeed(value)
