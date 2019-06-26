@@ -112,7 +112,7 @@ module R710_Tools
           set_fan_speed(target) if target != @last_speed_set
           sleep @config[:interval]
         end
-      rescue SystemError => e
+      rescue StandardError => e
         puts "Exception or Interrupt occurred - switching back to automatic fan control"
         set_fan_automatic
         raise e
