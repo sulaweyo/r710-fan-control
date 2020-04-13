@@ -1,0 +1,16 @@
+---
+# configuration file for sulaweyo/r710-fan-control
+:user: 'root'           # idrac user
+:pass: 'your password'  # idrac password
+:host: 'your idrac ip'  # idrac ip
+:interval: 5            # time between checks in control loop
+:max_manual_temp: 66    # switch back to automatic fan control at this temp
+:cool_down_time: 120    # after switch to automatic wait that long before checking again
+# the following hash defines fan speed values and the temp rang that is ok for that speed
+:speed_steps:
+  !ruby/range 0..40: 15   # run at 10% speed up to 30°C
+  !ruby/range 41..50: 20  # run at 15% speed up to 40°C
+  !ruby/range 51..55: 30 # run at 20% speed up to 50°C
+  !ruby/range 56..60: 35  # run at 30% speed up to 60°C
+  !ruby/range 61..66: 40  # run at 40% speed up to 65°C
+
