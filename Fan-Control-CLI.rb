@@ -47,7 +47,7 @@ module R710_Tools
     desc 'setspeed [value]', 'Set fan speed to given percent of max speed'
 
     def setspeed(value)
-      raise 'Given value out of acceptable range (10-100)' unless value.to_i.between?(10, 100)
+      raise 'Given value out of acceptable range (0-100)' unless value.to_i.between?(0, 100)
       fc = R710_Tools::Fan_Control.instance
       fc.set_fan_manual
       fc.set_fan_speed(value.to_i)

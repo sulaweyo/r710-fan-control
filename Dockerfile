@@ -6,5 +6,6 @@ COPY fan-control.yaml /opt/fancontrol/
 COPY Gemfile /opt/fancontrol/
 RUN gem install bundler
 RUN bundle install --gemfile=/opt/fancontrol/Gemfile
-#ENTRYPOINT ["/opt/fancontrol/Fan-Control-CLI.rb start"]
+WORKDIR /opt/fancontrol/
+CMD ["/opt/fancontrol/Fan-Control-CLI.rb", "start"]
 
