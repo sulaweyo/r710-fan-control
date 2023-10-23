@@ -94,14 +94,14 @@ module R710_Tools
 
     # set fan speed control to manual
     def set_fan_manual
-      system("#{@ipmitool} -I lanplus -H #{@config[:host]} -U #{@config[:user]} -P #{@config[:pass]} raw 0x30 0x30 0x01 0x00")
+      system("#{@ipmitool} -I lanplus -H #{@config[:host]} -U #{@config[:user]} -P #{@config[:pass]} raw 0x3a 0x07 0x01 0x20 0x00")
       @is_manual = true
       puts "Manual fan control active".colorize(:light_blue)
     end
 
     # set fan speed control to automatic
     def set_fan_automatic
-      system("#{@ipmitool} -I lanplus -H #{@config[:host]} -U #{@config[:user]} -P #{@config[:pass]} raw 0x30 0x30 0x01 0x01")
+      system("#{@ipmitool} -I lanplus -H #{@config[:host]} -U #{@config[:user]} -P #{@config[:pass]} raw 0x3a 0x07 0x01 0x20 0x01")
       @is_manual = false
       puts "Automatic fan control restored".colorize(:green)
     end
