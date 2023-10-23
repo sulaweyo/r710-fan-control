@@ -1,0 +1,15 @@
+[Unit]
+Description=R710 fan control
+
+[Service]
+Type=simple
+User=<your user>
+Group=<your group>
+ExecStart=/opt/r710-fan-control/Fan-Control-CLI.rb start
+ExecStopPost=/opt/r710-fan-control/Fan-Control-CLI.rb reset
+WorkingDirectory=/opt/r710-fan-control
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target

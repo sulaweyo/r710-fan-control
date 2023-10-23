@@ -1,0 +1,16 @@
+---
+version: "3.3"
+services:
+  fancontrol:
+    build: 
+      context: .
+    image: mathsterk/fancontrol
+    container_name: fancontrol
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${PWD}/fan-control.yaml:/opt/fancontrol/fan-control.yaml
+    restart: unless-stopped
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
